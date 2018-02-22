@@ -65,10 +65,8 @@ namespace Modo.ViewModel
                     newWork.CreateTime = DateTime.Now;
                     newWork.Title = this.Title;
                     var id = _workRepository.InsertWork(newWork);
-                    // 토스트
                     ToastService.ShowToastNotification("Modo : 목록이 추가되었습니다.");
-
-
+                    
                     RaisePropertyChanged(() => Todos);
                 }));
             }
