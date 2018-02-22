@@ -40,6 +40,7 @@ namespace Modo.ViewModel
                 return _deleteCommand ?? (_deleteCommand = new RelayCommand(() =>
                 {
                     _workRepository.DeleteWork(Todo);
+                    Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.List, IsTop = true });
                 }));
             }
         }
@@ -51,6 +52,7 @@ namespace Modo.ViewModel
                 return _updateCommand ?? (_updateCommand = new RelayCommand(() =>
                 {
                     _workRepository.UpdateWork(Todo);
+                    Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.List, IsTop = true });
                 }));
             }
         }
@@ -63,6 +65,7 @@ namespace Modo.ViewModel
                 {
                     Todo.CompleteTime = new DateTime();
                     _workRepository.UpdateWork(Todo);
+                    Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.List, IsTop = true });
                 }));
             }
         }
