@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Modo.Data
 {
-    interface IWorkRepository
+    public interface IWorkRepository
     {
-        int InsertWork(Work work);
+        long InsertWork(Work work);
 
-        Work GetWork(int id);
+        Work GetWork(long id);
         List<Work> GetWorks(bool isContainDone);
 
         bool UpdateWork(Work work);

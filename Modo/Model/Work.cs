@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Modo.Model
 {
+    [Table("Work")]
     public class Work
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
         public string Desc { get; set; }
         public DateTime CreateTime { get; set; }
