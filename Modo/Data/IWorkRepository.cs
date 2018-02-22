@@ -9,7 +9,12 @@ namespace Modo.Data
 {
     interface IWorkRepository
     {
-        Work GetWork(long id);
-        void SaveWork(Work work);
+        int InsertWork(Work work);
+
+        Work GetWork(int id);
+        List<Work> GetWorks(bool isContainDone);
+
+        bool UpdateWork(Work work);
+        bool DeleteWork(Work work);
     }
 }
