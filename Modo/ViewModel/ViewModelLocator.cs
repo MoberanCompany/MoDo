@@ -13,15 +13,15 @@ namespace Modo.ViewModel
     {
         static ViewModelLocator()
         {
-
-
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<CalenderViewModel>();
             SimpleIoc.Default.Register<ListViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<SettingViewModel>();
-            SimpleIoc.Default.Register<IWorkRepository, SqLiteWorkRepository>(true);
+            SimpleIoc.Default.Register<DetailViewModel>();
+
+            SimpleIoc.Default.Register<IWorkRepository, SqLiteWorkRepository>();
         }
 
         public CalenderViewModel CalenderPage { get { return ServiceLocator.Current.GetInstance<CalenderViewModel>(); } }
@@ -31,5 +31,7 @@ namespace Modo.ViewModel
         public MainViewModel MainPage { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
 
         public SettingViewModel SettingPage { get { return ServiceLocator.Current.GetInstance<SettingViewModel>(); } }
+
+        public DetailViewModel DetailPage { get { return ServiceLocator.Current.GetInstance<DetailViewModel>(); } }
     }
 }

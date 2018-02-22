@@ -104,6 +104,7 @@
     <Compile Include="Data\SqLiteBaseRepository.cs" />
     <Compile Include="Model\Work.cs" />
     <Compile Include="ViewModel\CalenderViewModel.cs" />
+    <Compile Include="ViewModel\DetailViewModel.cs" />
     <Compile Include="ViewModel\ListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />

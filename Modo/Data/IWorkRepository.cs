@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modo.Data
 {
-    interface IWorkRepository
+    public interface IWorkRepository
     {
         int InsertWork(Work work);
 
@@ -16,5 +16,7 @@ namespace Modo.Data
 
         bool UpdateWork(Work work);
         bool DeleteWork(Work work);
+
+        bool Reset();
     }
 }

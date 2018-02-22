@@ -47,6 +47,8 @@ namespace Modo
                 }
                 catch (SqliteException e)
                 {
+                    Console.WriteLine(e.StackTrace);
+
                     //Do nothing
                 }
             }

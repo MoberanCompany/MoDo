@@ -8,5 +8,9 @@ namespace Modo.Message
 {
     public class ShowListPage
     {
+        public ShowListPage()
+        {
+
+        }
     }
 }
