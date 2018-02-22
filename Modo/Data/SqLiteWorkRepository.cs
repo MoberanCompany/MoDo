@@ -24,64 +24,56 @@ namespace Modo.Data
 
         public Work GetWork(long id)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Work> GetWorks(bool isContainDone)
-        {
-            List<Work> result = null;
             try
             {
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-                    SqliteCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "create table IF NOT EXISTS Work (" +
-                        "Id integer primary key, Title text not null, Desc text, CreateTime datetime, ReserveTime datetime, CompleteTime datetime " +
-                        ") ";
-                    SqliteDataReader reader = cmd.ExecuteReader();
-                    if(reader.Read())
-                    {
-                        //reader.GetData(0);
-                    }
-                    conn.Close();
+                    return conn.Get<Work>(id);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
-                throw;
             }
-            return result;
+
+            return null;
         }
 
-        public long InsertWork(Work work)
+        public List<Work> GetWorks(bool isContainDone)
         {
-            //string title = work.Title;
-            //DateTime dateTime = work.CreateTime;
-            //int workId = work.Id;
-
-            //InsertDatabase(title, dateTime);
-            //return workId;
-            ////throw new NotImplementedException();
-
             try
             {
                 using (var conn = DbConnection)
                 {
                     conn.Open();
+                    return conn.GetAll<Work>().ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
 
+            return new List<Work>();
+        }
+
+        public long InsertWork(Work work)
+        {
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
                     return conn.Insert<Work>(work);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
-                throw;
             }
 
+            return -1;
         }
 
         public bool Reset()
