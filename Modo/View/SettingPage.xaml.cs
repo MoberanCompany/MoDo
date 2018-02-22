@@ -1,10 +1,12 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +27,12 @@ namespace Modo.View
         public SettingPage()
         {
             this.InitializeComponent();
+
+            Messenger.Default.Register<SetInitCommand>(this, async (msg) =>
+            {
+                var dialog = new MessageDialog("Your message here");
+                await dialog.ShowAsync();
+            });
         }
     }
 }
