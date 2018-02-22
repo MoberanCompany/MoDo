@@ -23,7 +23,6 @@ namespace Modo.View
     /// </summary>
     public sealed partial class DetailPage : Page
     {
-
         public DetailPage()
         {
             this.InitializeComponent();

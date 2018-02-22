@@ -24,7 +24,19 @@ namespace Modo.Data
         /// <returns></returns>
         public bool DeleteWork(Work work)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.Delete(work);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
         }
 
         public Work GetWork(long id)
@@ -70,7 +82,6 @@ namespace Modo.Data
             {
                 Console.WriteLine(e.StackTrace);
             }
-
             return new List<Work>();
         }
 
@@ -114,11 +125,8 @@ namespace Modo.Data
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
                 throw;
             }
-
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -128,7 +136,19 @@ namespace Modo.Data
         /// <returns></returns>
         public bool UpdateWork(Work work)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.Update(work);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
         }
 
 

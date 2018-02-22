@@ -68,7 +68,7 @@ namespace Modo.ViewModel
                     newWork.Title = this.Title;
                     var id = _workRepository.InsertWork(newWork);
                     // 추가 기능
-                    //Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.Detail, IsTop = false });
+                    Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.Detail, IsTop = false });
                 }));
             }
         }
