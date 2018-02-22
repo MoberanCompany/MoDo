@@ -46,7 +46,7 @@
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>
-            <Frame Name="MainContent" Loaded="MainContent_Loaded"/>
+            <Frame x:Name="MainContent" Loaded="MainContent_Loaded"/>
         </SplitView.Content>
     </SplitView>
     

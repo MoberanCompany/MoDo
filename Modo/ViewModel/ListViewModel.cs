@@ -6,6 +6,7 @@ using Modo.Message;
 using Modo.Model;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
@@ -61,7 +62,12 @@ namespace Modo.ViewModel
         /// <summary>
         /// todo 타이틀
         /// </summary>
-        public string Title { get; set; }
+        public string Title
+        {
+            get { return _title; }
+            set { Set(ref _title, value); }
+        }
+        private string _title;
 
         /// <summary>
         /// todo 추가 버튼
@@ -72,12 +78,12 @@ namespace Modo.ViewModel
             {
                 return _addCommand ?? (_addCommand = new RelayCommand(() =>
                 {
-                    Work newWork = new Work();
-                    newWork.CreateTime = DateTime.Now;
-                    newWork.Title = this.Title;
-                    var id = _workRepository.InsertWork(newWork);
+                    var id = _workRepository.InsertWork(new Work { Title = Title });
+
                     ToastService.ShowToastNotification("Modo : 목록이 추가되었습니다.");
-                    
+
+                    Title = "";
+
                     RaisePropertyChanged(() => Todos);
                 }));
             }

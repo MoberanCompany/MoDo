@@ -66,6 +66,7 @@
         <!--완료 프로세스 표기 여부-->
         <CheckBox Content="Show completed Todo" 
                   IsChecked="{Binding IsShowCompleted, Mode=TwoWay}"
+                  Margin="5"
                   Grid.Row="2" 
                   HorizontalAlignment="Right" />
     </Grid>

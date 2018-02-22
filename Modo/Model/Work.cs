@@ -17,5 +17,10 @@ namespace Modo.Model
         public DateTime CreateTime { get; set; }
         public DateTime? ReserveTime { get; set; }
         public DateTime? CompleteTime { get; set; }
+
+        public Work()
+        {
+            CreateTime = DateTime.Now;
+        }
     }
 }
