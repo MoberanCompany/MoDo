@@ -60,7 +60,12 @@ namespace Modo.View
             {
                 BackButtonPage_BackRequested(null, null);
             });
+
+
+            // 초기 페이지 설정
+            MainContent.Navigate(typeof(ListPage));
             
+            // 백버튼 이벤트 바인딩
             SystemNavigationManager.GetForCurrentView().BackRequested += BackButtonPage_BackRequested;
         }
 
