@@ -33,9 +33,7 @@ namespace Modo.ViewModel
         public Work Todo
         {
             get { return _todo; }
-            set { Set(ref _todo, value);
-                _todo.CompleteTime = new DateTime();
-            }
+            set { Set(ref _todo, value); }
         }
 
         private ICommand _deleteCommand;

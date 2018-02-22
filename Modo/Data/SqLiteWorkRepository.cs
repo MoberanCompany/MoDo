@@ -82,6 +82,7 @@ namespace Modo.Data
             {
                 Console.WriteLine(e.StackTrace);
             }
+
             return new List<Work>();
         }
 
@@ -97,9 +98,8 @@ namespace Modo.Data
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-                    var workId = conn.Insert<Work>(work);
-                    conn.Close();
-                    return workId;
+
+                    return conn.Insert<Work>(work);
                 }
             }
             catch (Exception e)

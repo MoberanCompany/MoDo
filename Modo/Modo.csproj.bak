@@ -99,9 +99,12 @@
     <Compile Include="Data\SqLiteWorkRepository.cs" />
     <Compile Include="Helper\BackButtonPage.cs" />
     <Compile Include="Helper\BindableBase.cs" />
+<<<<<<< HEAD
     <Compile Include="Helper\BooleanToEnableConverter.cs" />
     <Compile Include="Helper\BooleanToVisibilityConverter.cs" />
+=======
     <Compile Include="Helper\LinefeedConverter.cs" />
+>>>>>>> 75a75d6029ab96528108d11a62ce117ef5b35599
     <Compile Include="Message\BackPage.cs" />
     <Compile Include="Message\MovePage.cs" />
     <Compile Include="Message\ShowListPage.cs" />
