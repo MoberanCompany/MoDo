@@ -21,6 +21,8 @@
         <Button Content="Add" Command="{Binding AddCommand}"
                 Grid.Column="1"
                 Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <ListView Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ListView ItemsSource="{Binding Todos}"
+                  SelectedItem="{Binding Todo, Mode=TwoWay}"
+                  Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Page>
