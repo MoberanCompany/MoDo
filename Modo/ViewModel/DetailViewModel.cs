@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Popups;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml;
 
 namespace Modo.ViewModel
 {
@@ -19,10 +21,9 @@ namespace Modo.ViewModel
         private IWorkRepository _workRepository;
         public DetailViewModel(IWorkRepository workRepository)
         {
-            _workRepository = workRepository;            
+            _workRepository = workRepository;
         }
 
-        private bool _isEditable;
         public bool IsEditable
         {
             get { return Todo.CompleteTime == null; }
@@ -32,7 +33,9 @@ namespace Modo.ViewModel
         public Work Todo
         {
             get { return _todo; }
-            set { Set(ref _todo, value); }
+            set { Set(ref _todo, value);
+                _todo.CompleteTime = new DateTime();
+            }
         }
 
         private ICommand _deleteCommand;
@@ -83,5 +86,7 @@ namespace Modo.ViewModel
                 }));
             }
         }
+
+        
     }
 }
