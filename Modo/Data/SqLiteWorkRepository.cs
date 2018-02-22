@@ -86,6 +86,21 @@ namespace Modo.Data
 
         public bool Reset()
         {
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.DeleteAll<Work>();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+
+                throw;
+            }
+
             throw new NotImplementedException();
         }
 
