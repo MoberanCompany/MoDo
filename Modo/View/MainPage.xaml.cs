@@ -52,7 +52,6 @@ namespace Modo.View
 
                 MainContent.Navigate(type);
 
-
                 checkBackButtonVisivility();
             });
 
