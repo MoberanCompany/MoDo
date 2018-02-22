@@ -16,7 +16,6 @@ namespace Modo.ViewModel
     public class ListViewModel : ViewModelBase
     {
         private IWorkRepository _workRepository;
-
         public ListViewModel(IWorkRepository workRepository)
         {
             _workRepository = workRepository;

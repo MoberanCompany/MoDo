@@ -99,6 +99,7 @@
     <Compile Include="Data\SqLiteWorkRepository.cs" />
     <Compile Include="Helper\BackButtonPage.cs" />
     <Compile Include="Helper\BindableBase.cs" />
+    <Compile Include="Message\BackPage.cs" />
     <Compile Include="Message\MovePage.cs" />
     <Compile Include="Message\ShowListPage.cs" />
     <Compile Include="Data\SqLiteBaseRepository.cs" />

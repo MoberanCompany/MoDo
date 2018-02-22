@@ -36,7 +36,20 @@ namespace Modo.Data
 
         public Work GetWork(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.Get<Work>(id);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+
+            return null;
         }
 
         public List<Work> GetWorks(bool isContainDone)
@@ -46,47 +59,49 @@ namespace Modo.Data
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-                    return (List <Work>) conn.GetAll<Work>();
+                    return conn.GetAll<Work>().ToList();
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                throw;
             }
+            return new List<Work>();
         }
 
         public long InsertWork(Work work)
         {
-            //string title = work.Title;
-            //DateTime dateTime = work.CreateTime;
-            //int workId = work.Id;
-
-            //InsertDatabase(title, dateTime);
-            //return workId;
-            ////throw new NotImplementedException();
-
             try
             {
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-
                     return conn.Insert<Work>(work);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
-                throw;
             }
 
+            return -1;
         }
 
         public bool Reset()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.DeleteAll<Work>();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
         }
 
         public bool UpdateWork(Work work)
