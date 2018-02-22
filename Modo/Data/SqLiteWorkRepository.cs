@@ -15,12 +15,27 @@ namespace Modo.Data
 
         }
 
-        public Work GetWork(long id)
+        public bool DeleteWork(Work work)
         {
             throw new NotImplementedException();
         }
 
-        public void SaveWork(Work work)
+        public Work GetWork(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Work> GetWorks(bool isContainDone)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertWork(Work work)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateWork(Work work)
         {
             throw new NotImplementedException();
         }

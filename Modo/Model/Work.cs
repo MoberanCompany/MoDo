@@ -13,7 +13,8 @@ namespace Modo.Model
         public int Id { get; set; }
         public string Title { get; set; }
         public string Desc { get; set; }
-        public DateTime? CreateTime { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime? ReserveTime { get; set; }
         public DateTime? CompleteTime { get; set; }
     }
 }
