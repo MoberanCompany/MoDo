@@ -26,7 +26,7 @@ namespace Modo.ViewModel
         {
             get
             {
-                return _workRepository?.GetWorks();
+                return _workRepository?.GetWorks(IsShowCompleted);
             }
         }
 
@@ -46,6 +46,17 @@ namespace Modo.ViewModel
             }
         }
         private Work _todo;
+
+        public bool IsShowCompleted
+        {
+            get { return _isShowCompleted; }
+            set
+            {
+                Set(ref _isShowCompleted, value);
+                RaisePropertyChanged(() => Todos);
+            }
+        }
+        private bool _isShowCompleted = false;
 
         /// <summary>
         /// todo 타이틀
