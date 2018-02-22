@@ -16,5 +16,7 @@ namespace Modo.Data
 
         bool UpdateWork(Work work);
         bool DeleteWork(Work work);
+
+        bool Reset();
     }
 }

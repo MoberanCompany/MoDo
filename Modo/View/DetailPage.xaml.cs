@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modo.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Modo.View
     /// </summary>
     public sealed partial class DetailPage : Page
     {
+
         public DetailPage()
         {
             this.InitializeComponent();

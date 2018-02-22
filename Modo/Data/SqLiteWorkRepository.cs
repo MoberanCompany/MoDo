@@ -5,19 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper.Contrib.Extensions;
+using Microsoft.Data.Sqlite;
 using Modo.Model;
 
 namespace Modo.Data
 {
     public class SqLiteWorkRepository : SqLiteBaseRepository, IWorkRepository
     {
-        //SQLiteAdapter
-
         public SqLiteWorkRepository()
         {
 
         }
-
+        
         public bool DeleteWork(Work work)
         {
             throw new NotImplementedException();
@@ -30,7 +29,31 @@ namespace Modo.Data
 
         public List<Work> GetWorks(bool isContainDone)
         {
-            throw new NotImplementedException();
+            List<Work> result = null;
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    SqliteCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "create table IF NOT EXISTS Work (" +
+                        "Id integer primary key, Title text not null, Desc text, CreateTime datetime, ReserveTime datetime, CompleteTime datetime " +
+                        ") ";
+                    SqliteDataReader reader = cmd.ExecuteReader();
+                    if(reader.Read())
+                    {
+                        //reader.GetData(0);
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+
+                throw;
+            }
+            return result;
         }
 
         public long InsertWork(Work work)
@@ -61,9 +84,16 @@ namespace Modo.Data
 
         }
 
+        public bool Reset()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool UpdateWork(Work work)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

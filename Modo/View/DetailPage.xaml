@@ -5,9 +5,36 @@
     xmlns:local="using:Modo.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding DetailPage, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="detail"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>            
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>            
+        </Grid.ColumnDefinitions>
+
+        <TextBox Text="{Binding Todo.Title, Mode=TwoWay}" HorizontalAlignment="Stretch" Grid.Row="0" Margin="10,10,10,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+        <TextBlock Text="{Binding Todo.Title, Mode=TwoWay}" HorizontalAlignment="Right" Grid.Row="1" Margin="10,10,10,0" />
+        <TextBox Text="{Binding Todo.Title, Mode=TwoWay}" HorizontalAlignment="Stretch" Grid.Row="2" Margin="10,10,10,10" />
+
+        <Button Content="Delete" Command="{Binding DeleteCommand}"
+                Grid.Row="3"
+                Margin="10"
+                VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Button Content="Complete" Command="{Binding CompleteCommand}"
+                Grid.Row="3"
+                Margin="10"
+                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <Button Content="Save" Command="{Binding SaveCommand}"
+                Grid.Row="3"
+                Margin="10"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
+    
 </Page>

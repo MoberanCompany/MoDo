@@ -23,9 +23,10 @@ namespace Modo.Data
         {
             get
             {
-                return new SqliteConnection("Filename=./my_database.db");
+                return new SqliteConnection("Filename=my_database.db");
             }
-        }
+        }        
+
         public void CreateDatabase()
         {
             try
@@ -44,7 +45,6 @@ namespace Modo.Data
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
                 throw;
             }
         }
