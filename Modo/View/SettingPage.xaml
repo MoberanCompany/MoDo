@@ -5,9 +5,13 @@
     xmlns:local="using:Modo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    DataContext="{Binding SettingPage, Source={StaticResource Locator}}"
+    mc:Ignorable="d" HorizontalAlignment="Stretch">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="Setting"/>
+        <Button x:Name="button" Content="초기화" 
+                Command="{Binding InitCommand}"
+                HorizontalAlignment="Stretch" Margin="5,35,5,0" VerticalAlignment="Top" Height="133"/>
     </Grid>
 </Page>
