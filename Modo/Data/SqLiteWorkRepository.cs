@@ -17,9 +17,26 @@ namespace Modo.Data
 
         }
         
+        /// <summary>
+        /// todo 삭제하기
+        /// </summary>
+        /// <param name="work"></param>
+        /// <returns></returns>
         public bool DeleteWork(Work work)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.Delete(work);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
         }
 
         public Work GetWork(long id)
@@ -40,6 +57,11 @@ namespace Modo.Data
             return null;
         }
 
+        /// <summary>
+        /// todo 리스트 가져오기
+        /// </summary>
+        /// <param name="isContainDone"></param>
+        /// <returns></returns>
         public List<Work> GetWorks(bool isContainDone)
         {
             try
@@ -47,17 +69,27 @@ namespace Modo.Data
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-                    return conn.GetAll<Work>().ToList();
+                    var list = conn.GetAll<Work>();
+                    if (isContainDone == false)
+                    {
+                        return list.Where(w => w.CompleteTime == null).ToList();
+                    }
+                    
+                    return list.ToList();
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
             }
-
             return new List<Work>();
         }
 
+        /// <summary>
+        /// todo 추가
+        /// </summary>
+        /// <param name="work"></param>
+        /// <returns></returns>
         public long InsertWork(Work work)
         {
             try
@@ -78,6 +110,10 @@ namespace Modo.Data
             return -1;
         }
 
+        /// <summary>
+        /// todo 전부 삭제
+        /// </summary>
+        /// <returns></returns>
         public bool Reset()
         {
             try
@@ -91,16 +127,30 @@ namespace Modo.Data
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
                 throw;
             }
-
-            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// todo 업데이트
+        /// </summary>
+        /// <param name="work"></param>
+        /// <returns></returns>
         public bool UpdateWork(Work work)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.Update(work);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
         }
 
 

@@ -12,7 +12,7 @@ namespace Modo.Data
         long InsertWork(Work work);
 
         Work GetWork(long id);
-        List<Work> GetWorks(bool isContainDone);
+        List<Work> GetWorks(bool isContainDone = false);
 
         bool UpdateWork(Work work);
         bool DeleteWork(Work work);
