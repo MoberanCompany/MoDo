@@ -32,11 +32,11 @@ namespace Modo.ViewModel
             {
                 return _addCommand ?? (_addCommand = new RelayCommand(() =>
                 {
-                    int newWorkId = -1;
                     Work newWork = new Work();
                     newWork.CreateTime = DateTime.Now;
                     newWork.Title = this.Title;
                     var id = _workRepository.InsertWork(newWork);
+                    this.Title = "";
                 }));
             }
         }

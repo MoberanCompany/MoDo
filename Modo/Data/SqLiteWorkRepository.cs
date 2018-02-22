@@ -24,36 +24,38 @@ namespace Modo.Data
 
         public Work GetWork(long id)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Work> GetWorks(bool isContainDone)
-        {
-            List<Work> result = null;
             try
             {
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-                    SqliteCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "create table IF NOT EXISTS Work (" +
-                        "Id integer primary key, Title text not null, Desc text, CreateTime datetime, ReserveTime datetime, CompleteTime datetime " +
-                        ") ";
-                    SqliteDataReader reader = cmd.ExecuteReader();
-                    if(reader.Read())
-                    {
-                        //reader.GetData(0);
-                    }
-                    conn.Close();
+                    return conn.Get<Work>(id);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
-                throw;
             }
-            return result;
+
+            return null;
+        }
+
+        public List<Work> GetWorks(bool isContainDone)
+        {
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.GetAll<Work>().ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+
+            return new List<Work>();
         }
 
         public long InsertWork(Work work)
@@ -63,9 +65,7 @@ namespace Modo.Data
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-
-                    long workId = conn.Insert<Work>(work);
-
+                    var workId = conn.Insert<Work>(work);
                     conn.Close();
                     return workId;
                 }
@@ -73,10 +73,9 @@ namespace Modo.Data
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
-                throw;
             }
 
+            return -1;
         }
 
         public bool Reset()

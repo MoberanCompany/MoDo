@@ -30,6 +30,7 @@ namespace Modo.View
         {
             this.InitializeComponent();
 
+            // 페이지 이동
             Messenger.Default.Register<MovePage>(this, (msg) =>
             {
                 Type type = null;
@@ -55,14 +56,20 @@ namespace Modo.View
                 checkBackButtonVisivility();
             });
 
+            // 페이지 뒤로가기
+            Messenger.Default.Register<BackPage>(this, (msg) =>
+            {
+                BackButtonPage_BackRequested(null, null);
+            });
+            
             SystemNavigationManager.GetForCurrentView().BackRequested += BackButtonPage_BackRequested;
         }
 
         private void BackButtonPage_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            if (MainContent.CanGoBack)
+            if (MainContent.BackStack.Count > 1)
             {
-                e.Handled = true;
+                //e.Handled = true;
                 MainContent.GoBack();
             }
 
