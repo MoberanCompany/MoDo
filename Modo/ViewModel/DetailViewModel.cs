@@ -18,15 +18,7 @@ namespace Modo.ViewModel
         private IWorkRepository _workRepository;
         public DetailViewModel(IWorkRepository workRepository)
         {
-            _workRepository = workRepository;
-
-            _todo = new Work();
-            _todo.Title = "tttt";
-            _todo.Desc = "desc";
-
-            List<Work> list = workRepository.GetWorks(true);
-
-            Console.WriteLine("" + list.Count);
+            _workRepository = workRepository;            
         }
 
         private Work _todo;

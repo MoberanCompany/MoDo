@@ -31,7 +31,7 @@
                 Grid.Row="3"
                 Margin="10"
                 VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-        <Button Content="Save" Command="{Binding SaveCommand}"
+        <Button Content="Save" Command="{Binding UpdateCommand}"
                 Grid.Row="3"
                 Margin="10"
                 VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
