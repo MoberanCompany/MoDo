@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Popups;
 
 namespace Modo.ViewModel
 {
@@ -21,15 +22,17 @@ namespace Modo.ViewModel
             _workRepository = workRepository;            
         }
 
+        private bool _isEditable;
+        public bool IsEditable
+        {
+            get { return Todo.CompleteTime == null; }
+        }
+
         private Work _todo;
         public Work Todo
         {
             get { return _todo; }
-            set
-            {
-                Set(ref _todo, value);
-                // 코드
-            }
+            set { Set(ref _todo, value); }
         }
 
         private ICommand _deleteCommand;
@@ -37,10 +40,21 @@ namespace Modo.ViewModel
         {
             get
             {
-                return _deleteCommand ?? (_deleteCommand = new RelayCommand(() =>
+                return _deleteCommand ?? (_deleteCommand = new RelayCommand(async () =>
                 {
-                    _workRepository.DeleteWork(Todo);
-                    Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.List, IsTop = true });
+                    var dialog = new MessageDialog("Delete?");
+
+                    dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
+                    dialog.Commands.Add(new UICommand("No") { Id = 1 });
+                    dialog.DefaultCommandIndex = 0;
+                    dialog.CancelCommandIndex = 1;
+                    var result = await dialog.ShowAsync();
+
+                    if ((int)result.Id == 0)
+                    {
+                        _workRepository.DeleteWork(Todo);
+                        Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.List, IsTop = true });
+                    }                    
                 }));
             }
         }
