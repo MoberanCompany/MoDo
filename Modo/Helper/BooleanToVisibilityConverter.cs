@@ -16,11 +16,16 @@ namespace Modo.Helper
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            //if (value is bool && (bool)value)
+            //{
+            //    return Visibility.Visible;
+            //}
+            //return Visibility.Collapsed;
             if (value is bool && (bool)value)
             {
-                return Visibility.Visible;
+                return Visibility.Collapsed;
             }
-            return Visibility.Collapsed;
+            return Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
