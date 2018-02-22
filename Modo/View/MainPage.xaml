@@ -27,7 +27,7 @@
                     <ListBoxItem Name="HomeListBoxItem">
                         <StackPanel Orientation="Horizontal" >
                             <SymbolIcon Symbol="List" />
-                            <TextBlock Text="EventList" FontSize="16" Margin="20,0,0,0" />
+                            <TextBlock Text="To Do List" FontSize="16" Margin="20,0,0,0" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="CalenderViewBoxItem">
