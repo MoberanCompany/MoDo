@@ -60,10 +60,6 @@ namespace Modo.View
             {
                 BackButtonPage_BackRequested(null, null);
             });
-
-
-            // 초기 페이지 설정
-            MainContent.Navigate(typeof(ListPage));
             
             // 백버튼 이벤트 바인딩
             SystemNavigationManager.GetForCurrentView().BackRequested += BackButtonPage_BackRequested;
@@ -71,7 +67,7 @@ namespace Modo.View
 
         private void BackButtonPage_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            if (MainContent.BackStack.Count > 1)
+            if (MainContent.CanGoBack)
             {
                 //e.Handled = true;
                 MainContent.GoBack();
@@ -82,7 +78,7 @@ namespace Modo.View
 
         private void checkBackButtonVisivility()
         {
-            if (MainContent.BackStack.Count > 1)
+            if (MainContent.CanGoBack)
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             }
@@ -90,6 +86,12 @@ namespace Modo.View
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             }
+        }
+
+        private void MainContent_Loaded(object sender, RoutedEventArgs e)
+        {
+            // 초기 페이지 설정
+            MainContent.Navigate(typeof(ListPage));
         }
     }
 }
