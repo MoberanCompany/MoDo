@@ -19,7 +19,19 @@ namespace Modo.Data
         
         public bool DeleteWork(Work work)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.Delete(work);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
         }
 
         public Work GetWork(long id)
@@ -29,31 +41,19 @@ namespace Modo.Data
 
         public List<Work> GetWorks(bool isContainDone)
         {
-            List<Work> result = null;
             try
             {
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-                    SqliteCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "create table IF NOT EXISTS Work (" +
-                        "Id integer primary key, Title text not null, Desc text, CreateTime datetime, ReserveTime datetime, CompleteTime datetime " +
-                        ") ";
-                    SqliteDataReader reader = cmd.ExecuteReader();
-                    if(reader.Read())
-                    {
-                        //reader.GetData(0);
-                    }
-                    conn.Close();
+                    return (List <Work>) conn.GetAll<Work>();
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
                 throw;
             }
-            return result;
         }
 
         public long InsertWork(Work work)
@@ -91,7 +91,19 @@ namespace Modo.Data
 
         public bool UpdateWork(Work work)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = DbConnection)
+                {
+                    conn.Open();
+                    return conn.Update(work);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                throw;
+            }
         }
 
 

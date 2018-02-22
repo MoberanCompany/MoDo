@@ -20,8 +20,8 @@
         </Grid.ColumnDefinitions>
 
         <TextBox Text="{Binding Todo.Title, Mode=TwoWay}" HorizontalAlignment="Stretch" Grid.Row="0" Margin="10,10,10,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
-        <TextBlock Text="{Binding Todo.Title, Mode=TwoWay}" HorizontalAlignment="Right" Grid.Row="1" Margin="10,10,10,0" />
-        <TextBox Text="{Binding Todo.Title, Mode=TwoWay}" HorizontalAlignment="Stretch" Grid.Row="2" Margin="10,10,10,10" />
+        <TextBlock Text="{Binding Todo.CreateTime, Mode=TwoWay}" HorizontalAlignment="Right" Grid.Row="1" Margin="10,10,10,0" />
+        <TextBox Text="{Binding Todo.Desc, Mode=TwoWay}" HorizontalAlignment="Stretch" Grid.Row="2" Margin="10,10,10,10" />
 
         <Button Content="Delete" Command="{Binding DeleteCommand}"
                 Grid.Row="3"
