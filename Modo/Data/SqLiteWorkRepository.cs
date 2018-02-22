@@ -58,21 +58,16 @@ namespace Modo.Data
 
         public long InsertWork(Work work)
         {
-            //string title = work.Title;
-            //DateTime dateTime = work.CreateTime;
-            //int workId = work.Id;
-
-            //InsertDatabase(title, dateTime);
-            //return workId;
-            ////throw new NotImplementedException();
-
             try
             {
                 using (var conn = DbConnection)
                 {
                     conn.Open();
 
-                    return conn.Insert<Work>(work);
+                    long workId = conn.Insert<Work>(work);
+
+                    conn.Close();
+                    return workId;
                 }
             }
             catch (Exception e)
