@@ -97,7 +97,9 @@ namespace Modo.Data
                 using (var conn = DbConnection)
                 {
                     conn.Open();
-                    return conn.Insert<Work>(work);
+                    var workId = conn.Insert<Work>(work);
+                    conn.Close();
+                    return workId;
                 }
             }
             catch (Exception e)
