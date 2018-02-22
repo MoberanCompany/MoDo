@@ -78,7 +78,7 @@ namespace Modo.ViewModel
             {
                 return _completeCommand ?? (_completeCommand = new RelayCommand(() =>
                 {
-                    Todo.CompleteTime = new DateTime();
+                    Todo.CompleteTime = DateTime.Now;
                     _workRepository.UpdateWork(Todo);
                     Messenger.Default.Send(new MovePage { SourcePageType = SourcePage.List, IsTop = true });
                 }));
